@@ -13,7 +13,10 @@ export function generateStaticParams() {
 }
 
 export default function Profile() {
-  const { profile } = useLocalSearchParams<{ profile: string }>();
+  const localSearchParams = useLocalSearchParams() as any;
+  const profile =
+    localSearchParams.profile[localSearchParams.profile.length - 1];
+
   return <ProfileScreen profile={profile} />;
 }
 
